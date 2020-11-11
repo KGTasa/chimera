@@ -1,0 +1,301 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block body %}
+<div class="center">
+    {{ form.hidden_tag() }}
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">Chimera Configuration</h1>
+        </div>
+    </div>
+    {{ utils.flashed_messages() }}
+    <form method=post>
+        <div class="row">
+            <div class="col">
+            {{ wtf.form_field(form.submit, button_map={'submit':'success btn-block'})}}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h2>Global Configs</h2>
+                {{ wtf.form_field(form.root_path )}}
+                <div class="custom-control custom-switch">
+                    {{form.prod}} {{form.prod.label( class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.save_lyrics}} {{form.save_lyrics.label( class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.m3u}} {{form.m3u.label( class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.path_with_service}} {{form.path_with_service.label( class_="custom-control-label")}}
+                </div>
+                {{ wtf.form_field(form.auto_login) }}
+                <div class="custom-control custom-switch">
+                    {{form.merge_disks}} {{form.merge_disks.label( class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.force_merge_albums}} {{form.force_merge_albums.label( class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.concurrency}} {{form.concurrency.label( class_="custom-control-label")}}
+                </div>
+                {{ wtf.form_field(form.workers) }}
+                <div class="custom-control custom-switch">
+                    {{form.pad_track}} {{form.pad_track.label( class_="custom-control-label")}}
+                </div>
+                {{ wtf.form_field(form.pad_track_width) }}
+                <div class="custom-control custom-switch">
+                    {{form.save_cover}} {{form.save_cover.label( class_="custom-control-label")}}
+                </div>
+                {{ wtf.form_field(form.cover_file_name) }}
+                {{ wtf.form_field(form.api_token) }}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h2>DEEZER</h2>
+                {{ wtf.form_field(form.deezer_username) }}
+                {{ wtf.form_field(form.deezer_email) }}
+                {{ wtf.form_field(form.deezer_password) }}
+                {{ wtf.form_field(form.deezer_quality) }}
+                <div class="custom-control custom-switch">
+                    {{form.deezer_quality_fallback}} {{form.deezer_quality_fallback.label( class_="custom-control-label")}}
+                </div>
+                {{ wtf.form_field(form.deezer_cover_size) }}
+                <div class="custom-control custom-switch">
+                    {{form.deezer_inline_decrypt}} {{form.deezer_inline_decrypt.label( class_="custom-control-label")}}
+                </div>
+            </div>
+            <div class="col">
+                <h2>QOBUZ</h2>
+                {{ wtf.form_field(form.qobuz_email) }}
+                {{ wtf.form_field(form.qobuz_password) }}
+                {{ wtf.form_field(form.qobuz_quality) }}
+                <div class="custom-control custom-switch">
+                    {{form.qobuz_quality_fallback}} {{form.qobuz_quality_fallback.label( class_="custom-control-label")}}
+                </div>
+                {{ wtf.form_field(form.qobuz_app_id) }}
+                {{ wtf.form_field(form.qobuz_secret) }}
+                <!-- {{ wtf.form_field(form.qobuz_seed_type) }} -->
+                {{ wtf.form_field(form.qobuz_cover_size) }}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h2>Spotify</h2>
+                {{ wtf.form_field(form.spotify_default_service) }}
+                {{ wtf.form_field(form.spotify_username) }}
+                {{ wtf.form_field(form.spotify_blacklist) }}
+                {{ wtf.form_field(form.spotify_client_id) }}
+                {{ wtf.form_field(form.spotify_client_secret) }}
+                {{ wtf.form_field(form.spotify_redirect_uri) }}
+            </div>
+            <div class="col">
+                <h2>Audio Fingerprinting</h2>
+                {{ wtf.form_field(form.audio_acr_host) }}
+                {{ wtf.form_field(form.audio_acr_access_key) }}
+                {{ wtf.form_field(form.audio_access_secret) }}
+                {{ wtf.form_field(form.audio_device_id) }}
+                {{ wtf.form_field(form.audio_services) }}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h2>NAPSTER</h2>
+                {{ wtf.form_field(form.napster_email) }}
+                {{ wtf.form_field(form.napster_password) }}
+                {{ wtf.form_field(form.napster_api_token) }}
+                {{ wtf.form_field(form.napster_quality) }}
+                <div class="custom-control custom-switch">
+                    {{form.napster_quality_fallback}} {{form.napster_quality_fallback.label( class_="custom-control-label")}}
+                </div>
+                {{ wtf.form_field(form.napster_cover_size) }}
+            </div>
+            <div class="col">
+                <h2>TIDAL</h2>
+                {{ wtf.form_field(form.tidal_email) }}
+                {{ wtf.form_field(form.tidal_password) }}
+                {{ wtf.form_field(form.tidal_quality) }}
+                <div class="custom-control custom-switch">
+                    {{form.tidal_quality_fallback}} {{form.tidal_quality_fallback.label( class_="custom-control-label")}}
+                </div>
+                {{ wtf.form_field(form.tidal_cover_size) }}
+                {{ wtf.form_field(form.tidal_video_path) }}
+                <div class="custom-control custom-switch">
+                    {{form.tidal_video_pp}} {{form.tidal_video_pp.label( class_="custom-control-label")}}
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h2>GooglePlayMusic</h2>
+                <p>GooglePlayMusic uses gmusicapi library, which you need to install separately with: pip install gmusicapi</p>
+                <div class="custom-control custom-switch">
+                    {{form.gpm_enabled}} {{form.gpm_enabled.label( class_="custom-control-label")}}
+                </div>
+                {{ wtf.form_field(form.gpm_email) }}
+                {{ wtf.form_field(form.gpm_password) }}
+                {{ wtf.form_field(form.gpm_quality) }}
+                {{ wtf.form_field(form.gpm_device_id) }}
+            </div>
+            <div class="col">
+                <h2>SOUNDCLOUD</h2>
+                {{ wtf.form_field(form.soundcloud_username) }}
+                <h2>Discogs</h2>
+                <div class="custom-control custom-switch">
+                    {{form.discogs_enabled}} {{form.discogs_enabled.label( class_="custom-control-label")}}
+                </div>
+                {{ wtf.form_field(form.discogs_token) }}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h2>Track</h2>
+                {{ wtf.form_field(form.naming_scheme)}}
+                {{ wtf.form_field(form.folder_naming_scheme)}}
+                <p>Variable has to be in all caps, look below for available variables, tags which are in brackets are usable.</p>
+                <h3>Embedded Tags</h3>
+                <div class="custom-control custom-switch">
+                    {{form.tag_title}} {{form.tag_title.label( class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.tag_artist}} {{form.tag_artist.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.tag_date}} {{form.tag_date.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.tag_year}} {{form.tag_year.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.tag_cover}} {{form.tag_cover.label(class_="custom-control-label")}}
+                </div>     
+                <div class="custom-control custom-switch">
+                    {{form.tag_album}} {{form.tag_album.label(class_="custom-control-label")}}
+                </div>   
+                <div class="custom-control custom-switch">
+                    {{form.tag_tracknumber}} {{form.tag_tracknumber.label(class_="custom-control-label")}}
+                </div>   
+                <div class="custom-control custom-switch">
+                    {{form.tag_discnumber}} {{form.tag_discnumber.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.tag_genre}} {{form.tag_genre.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.tag_albumartist}} {{form.tag_albumartist.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.tag_bpm}} {{form.tag_bpm.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.tag_length}} {{form.tag_length.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.tag_organization}} {{form.tag_organization.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.tag_isrc}} {{form.tag_isrc.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.tag_gain}} {{form.tag_gain.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.tag_lyrics}} {{form.tag_lyrics.label(class_="custom-control-label")}}
+                </div>
+                <div>
+                    <div class="custom-control custom-switch" style="display: inline;">
+                        {{form.tag_comment}} {{form.tag_comment.label(class_="custom-control-label")}}
+                    </div>
+                    {{form.tag_comment_value}}
+                </div>
+            </div>
+            <div class="col">
+                <h2>Download</h2>
+                <dl class="row">
+                    <dd class="col-sm-3">Overwrite</dd>
+                    <dd class="col-sm-9">Overwrites if track already exists</dd>
+                    <dd class="col-sm-3">Add to db</dd>
+                    <dd class="col-sm-9">Saves basic track information in the db</dd>
+                    <dd class="col-sm-3">Check db</dd>
+                    <dd class="col-sm-9">If track exists in the db, it will be skipped</dd>
+                </dl>
+                <h3>Track</h3>
+                <div class="custom-control custom-switch">
+                    {{form.dl_track_overwrite}} {{form.dl_track_overwrite.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.dl_track_add_to_db}} {{form.dl_track_add_to_db.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.dl_track_check_db}} {{form.dl_track_check_db.label(class_="custom-control-label")}}
+                </div>                
+                <h3>Album</h3>
+                <div class="custom-control custom-switch">
+                    {{form.dl_album_overwrite}} {{form.dl_album_overwrite.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.dl_album_add_to_db}} {{form.dl_album_add_to_db.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.dl_album_check_db}} {{form.dl_album_check_db.label(class_="custom-control-label")}}
+                </div>                  
+                <h3>Playlist</h3>
+                <div class="custom-control custom-switch">
+                    {{form.dl_playlist_overwrite}} {{form.dl_playlist_overwrite.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.dl_playlist_add_to_db}} {{form.dl_playlist_add_to_db.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.dl_playlist_check_db}} {{form.dl_playlist_check_db.label(class_="custom-control-label")}}
+                </div>
+                <h3>Discography</h3>
+                <div class="custom-control custom-switch">
+                    {{form.dl_discography_overwrite}} {{form.dl_discography_overwrite.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.dl_discography_add_to_db}} {{form.dl_discography_add_to_db.label(class_="custom-control-label")}}
+                </div>
+                <div class="custom-control custom-switch">
+                    {{form.dl_discography_check_db}} {{form.dl_discography_check_db.label(class_="custom-control-label")}}
+                </div>                   
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h2>Playlist</h2>
+                <div class="custom-control custom-switch">
+                    {{form.save_as_compilation}} {{form.save_as_compilation.label(class_="custom-control-label")}}
+                </div>
+                {{ wtf.form_field(form.playlist_naming_scheme) }}
+                {{ wtf.form_field(form.playlist_folder_naming_scheme) }}
+                <p>Input has to be in a list format: ["PATH1", "PATH2", "PATH3"]. PLAYLIST translates to the playlist name</p>
+            </div>
+            <div class="col">
+                <h2>Discography</h2>
+                <p>If filter matches, track will not be downloaded, create an export to see if your filter is correct. Lower or uppercase will be ignored.</p>
+                {{ wtf.form_field(form.discography_filter) }}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                {{ wtf.form_field(form.submit, button_map={'submit':'success btn-block'})}}
+            </div>
+        </div>
+        <br>
+        
+</form>
+</div>
+{% endblock %}

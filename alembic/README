@@ -1,0 +1,7 @@
+Generic single-database configuration.
+1.  Create Migration Script
+    alembic revision -m "create account table"
+2.  Edit File in alembic\id_name.py
+    def upgrade():
+3.  Upgrade DB
+    alembic upgrade head
